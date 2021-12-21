@@ -15,7 +15,7 @@ const Appointments = ({ date }) => {
   //console.log(date);
 
   useEffect(() => {
-    const url = `https://floating-refuge-89159.herokuapp.com/appointments?email=${
+    const url = `http://localhost:5000/appointments?email=${
       user.email
     }&date=${date.toLocaleDateString()}`;
 

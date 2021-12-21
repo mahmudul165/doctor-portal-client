@@ -55,7 +55,10 @@ const AvailableAppointments = ({ date }) => {
         Available Appointments on {date.toDateString()}
       </Typography>
       {bookingSuccess && (
-        <Alert severity="success">Appointment Booked successfully!</Alert>
+        <Alert severity="success">
+          Appointment Booked successfully please check your Email to know
+          details!
+        </Alert>
       )}
       <Grid container spacing={2}>
         {bookings.map((booking) => (
