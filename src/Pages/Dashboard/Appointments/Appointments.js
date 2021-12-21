@@ -7,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
 
 const Appointments = ({ date }) => {
   const { user, token } = useAuth();
@@ -14,7 +15,9 @@ const Appointments = ({ date }) => {
   //console.log(date);
 
   useEffect(() => {
-    const url = `https://floating-refuge-89159.herokuapp.com/appointments?email=${user.email}&date=${date}`;
+    const url = `https://floating-refuge-89159.herokuapp.com/appointments?email=${
+      user.email
+    }&date=${date.toLocaleDateString()}`;
 
     fetch(url, {
       headers: {
@@ -36,6 +39,7 @@ const Appointments = ({ date }) => {
               <TableCell>Name</TableCell>
               <TableCell align="right">Time</TableCell>
               <TableCell align="right">Service</TableCell>
+              <TableCell align="right">Price</TableCell>
               <TableCell align="right">Action</TableCell>
             </TableRow>
           </TableHead>
@@ -50,7 +54,16 @@ const Appointments = ({ date }) => {
                 </TableCell>
                 <TableCell align="right">{row.time}</TableCell>
                 <TableCell align="right">{row.serviceName}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
+                <TableCell align="right">{row.price}</TableCell>
+                <TableCell align="right">
+                  {row.payment ? (
+                    "paid"
+                  ) : (
+                    <Link to={`/dashboard/payment/${row._id}`}>
+                      <button>Pay</button>
+                    </Link>
+                  )}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -27,7 +27,7 @@ const BookingModal = ({
   date,
   setBookingSuccess,
 }) => {
-  const { name, time } = booking;
+  const { name, time, price } = booking;
   const { user } = useAuth();
   const initialInfo = {
     patientName: user.displayName,
@@ -49,6 +49,7 @@ const BookingModal = ({
     const appointment = {
       ...bookingInfo,
       time,
+      price,
       serviceName: name,
       date: date.toLocaleDateString(),
     };
@@ -97,6 +98,14 @@ const BookingModal = ({
               size="small"
             />
             <TextField
+              disabled
+              sx={{ width: "90%", m: 1 }}
+              id="outlined-size-small"
+              name="price"
+              defaultValue={price}
+              size="small"
+            />
+            <TextField
               sx={{ width: "90%", m: 1 }}
               id="outlined-size-small"
               name="patientName"
@@ -112,6 +121,7 @@ const BookingModal = ({
               defaultValue={user.email}
               size="small"
             />
+
             <TextField
               sx={{ width: "90%", m: 1 }}
               id="outlined-size-small"
