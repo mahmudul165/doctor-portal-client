@@ -14,7 +14,7 @@ const Appointments = ({ date }) => {
   //console.log(date);
 
   useEffect(() => {
-    const url = `http://localhost:5000/appointments?email=${user.email}&date=${date}`;
+    const url = `https://floating-refuge-89159.herokuapp.com/appointments?email=${user.email}&date=${date}`;
 
     fetch(url, {
       headers: {
